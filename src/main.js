@@ -48,6 +48,13 @@ document.addEventListener('click',e=>{
   if(add){addToCart(add.dataset.add);return} if(detail){showProduct(detail.dataset.details);return} if(close){closeAll();return}
   if(qty){const i=cart.find(x=>x.id===qty.dataset.qty);i.quantity+=Number(qty.dataset.change);if(i.quantity<1)cart=cart.filter(x=>x!==i);renderCart()} if(remove){cart=cart.filter(i=>i.id!==remove.dataset.remove);renderCart()}
 });
+document.addEventListener('click',e=>{
+  const toggle=e.target.closest('.password-toggle');
+  if(!toggle)return;
+  const input=$(`#${toggle.getAttribute('aria-controls')}`), showing=input.type==='text';
+  input.type=showing?'password':'text'; toggle.textContent=showing?'Show':'Hide';
+  toggle.setAttribute('aria-label',showing?'Show password':'Hide password');
+});
 $('#cartButton').addEventListener('click',openDrawer); $('#overlay').addEventListener('click',closeAll); $('#searchButton').addEventListener('click',()=>openModal('searchModal')); $('#accountButton').addEventListener('click',()=>openModal('authModal')); $('#menuButton').addEventListener('click',()=>$('#shop').scrollIntoView());
 $('#searchInput').addEventListener('input',renderSearch); $('#checkoutButton').addEventListener('click',checkout);
 $('#filterButton').addEventListener('click',()=>$('.filters').scrollIntoView({behavior:'smooth',block:'center'}));
