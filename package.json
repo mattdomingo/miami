@@ -1,0 +1,11 @@
+{
+  "name": "savor-market",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": { "vite": "^6.0.5" }
+}
